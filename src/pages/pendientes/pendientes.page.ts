@@ -21,7 +21,11 @@ export class PendientePage {
 
     listaSeleccionada(lista: Lista) {
 
-        console.log(lista);
+        this.navCtrl.push(AgregarPage, {
+            titulo: lista.titulo,
+            lista : lista
+        });
+        // console.log(lista);
     }
 
     agregarLista() {
@@ -41,6 +45,7 @@ export class PendientePage {
                     if (data.titulo.length === 0) {
                         return;
                     }
+                    // Envia los datos a la página agregar.
                     this.navCtrl.push(AgregarPage, {
                         titulo: data.titulo
                     });
