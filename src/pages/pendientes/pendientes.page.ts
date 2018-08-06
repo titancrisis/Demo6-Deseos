@@ -10,20 +10,20 @@ import { AgregarPage } from '../agregar/agregar.page';
 })
 export class PendientePage {
 
-    listas: Lista[];
+    // listas: Lista[];
 
     constructor(private deseosService: DeseosService,
         private navCtrl: NavController,
         private alertCtrl: AlertController) {
         // Inicia la lista.
-        this.listas = deseosService.listas;
+        // this.listas = deseosService.listas;
     }
 
     listaSeleccionada(lista: Lista) {
 
         this.navCtrl.push(AgregarPage, {
             titulo: lista.titulo,
-            lista : lista
+            lista: lista
         });
         // console.log(lista);
     }
@@ -54,5 +54,10 @@ export class PendientePage {
         });
 
         alerta.present();
+    }
+
+    borrarLista(lista: Lista) {
+        // Borra un elemento de la lista.
+        this.deseosService.borrarLista(lista);
     }
 }

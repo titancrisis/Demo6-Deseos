@@ -8,9 +8,23 @@
   <img src="../../assets/imgs/pendientes.jpg">
 
   <ion-list>
-    <button ion-item *ngFor="let lista of listas" (click)="listaSeleccionada(lista)">
-      {{ lista.titulo }}
-    </button>
+    <ion-item-sliding *ngFor="let lista of deseosService.listas">
+      <button ion-item (click)="listaSeleccionada(lista)">
+        {{ lista.titulo }}
+
+        <ion-note item-end>
+          {{ lista.items.length }} items
+        </ion-note>
+      </button>
+
+      <!-- Opciones de la lista -->
+      <ion-item-options side="left">
+        <button (click)="borrarLista(lista)" ion-button color="danger" icon-only>
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
 
   <ion-fab bottom right>
